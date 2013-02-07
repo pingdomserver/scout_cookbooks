@@ -63,3 +63,21 @@ if node[:scout][:public_key]
     action :create
   end
 end
+
+if node[:scout][:delete_on_shutdown]
+  template "/etc/rc0.d/scout_shutdown" do
+    source "scout_shutdown.erb"
+    owner "root"
+    group "root"
+    mode 0755
+  end
+else
+  bash "delete_scout_shutdown" do
+    user "root"
+    code "rm -f /etc/rc0.d/scout_shutdown"
+  end
+end
+
+node[:scout][:plugin_libarary_support].each do |gemname|
+  gem_package gemname
+end
