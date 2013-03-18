@@ -77,7 +77,7 @@ If the <code>[:scout][:key]</code> attribute is not provided or the scout execut
       <td><code>nil</code></td>
     </tr>
     <tr>
-      <td>[:scout][:plugin_gems_]</td>
+      <td>[:scout][:plugin_gems]</td>
       <td>An Array of plugin gem dependencies to install. For example, you may want to install the <code>redis</code> gem if this node uses the redis plugin.</td>
       <td><code>nil</code></td>
     </tr>

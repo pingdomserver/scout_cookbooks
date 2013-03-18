@@ -2,6 +2,9 @@
 # Cookbook Name:: scout
 # Recipe:: default
 
+Chef::Log.info "Loading: #{cookbook_name}::#{recipe_name}"
+
+
 # create user and group
 group node[:scout][:group] do
   action [ :create, :manage ]
