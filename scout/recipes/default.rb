@@ -55,7 +55,8 @@ else
 end
 
 if node[:scout][:public_key]
-  template "/home/#{node[:scout][:user]}/.scout/scout_rsa.pub" do
+  home_dir = Dir.respond_to?(:home) ? Dir.home(node[:scout][:user]) : "/home/#{node[:scout][:user]}"
+  template "#{home_dir}/.scout/scout_rsa.pub" do
     source "scout_rsa.pub.erb"
     mode 0440
     owner node[:scout][:user]
