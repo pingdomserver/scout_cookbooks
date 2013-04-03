@@ -55,7 +55,7 @@ else
 end
 
 if node[:scout][:public_key]
-  home_dir = Dir.respond_to?(:home) ? Dir.home(node[:scout][:user]) : "/home/#{node[:scout][:user]}"
+  home_dir = Dir.respond_to?(:home) ? Dir.home(node[:scout][:user]) : File.expand_path("~#{node[:scout][:user]}")
   template "#{home_dir}/.scout/scout_rsa.pub" do
     source "scout_rsa.pub.erb"
     mode 0440
