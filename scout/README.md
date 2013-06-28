@@ -82,7 +82,7 @@ If the <code>[:scout][:key]</code> attribute is not provided or the scout execut
       <td><code>nil</code></td>
     </tr>
     <tr>
-      <td>[:scout][:scout_bin]</td>
+      <td>[:scout][:bin]</td>
       <td>The full path to the scout gem executable. When <code>nil</code>, this is discovered via <code>Gem#bindir</code>.</td>
       <td><code>nil</code></td>
     </tr>
