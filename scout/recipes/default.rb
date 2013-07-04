@@ -21,6 +21,7 @@ end.run_action(:create)
 
 # install scout agent gem
 gem_package "scout" do
+  gem_binary File.join(RbConfig::CONFIG['bindir'],"gem")
   version node[:scout][:version]
   action :install
 end
