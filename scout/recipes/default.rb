@@ -27,14 +27,6 @@ gem_package "scout" do
 end
 
 if node[:scout][:key]
-  # initialize scout gem
-  crontab_path = case node.platform
-  when 'debian','ubuntu'
-    "/var/spool/cron/crontabs/#{node[:scout][:user]}"
-  when 'redhat','centos','fedora','scientific','suse','amazon'
-    "/var/spool/cron/#{node[:scout][:user]}"
-  end
-
   scout_bin = node[:scout][:bin] ? node[:scout][:bin] : "#{Gem.bindir}/scout"
   name_attr = node[:scout][:name] ? %{ --name "#{node[:scout][:name]}"} : ""
   server_attr = node[:scout][:server] ? %{ --server "#{node[:scout][:server]}"} : ""
@@ -42,15 +34,11 @@ if node[:scout][:key]
   http_proxy_attr = node[:scout][:http_proxy] ? %{ --http-proxy "#{node[:scout][:http_proxy]}"} : ""
   https_proxy_attr = node[:scout][:https_proxy] ? %{ --https-proxy "#{node[:scout][:https_proxy]}"} : ""
   environment_attr = node[:scout][:environment] ? %{ --environment "#{node[:scout][:environment]}"} : ""
-  
-  code = <<-EOH
-  #{scout_bin} #{node[:scout][:key]}#{name_attr}#{server_attr}#{roles_attr}#{http_proxy_attr}#{https_proxy_attr}#{environment_attr}
-  EOH
 
   # schedule scout agent to run via cron
   cron "scout_run" do
     user node[:scout][:user]
-    command code
+    command "#{scout_bin} #{node[:scout][:key]}#{name_attr}#{server_attr}#{roles_attr}#{http_proxy_attr}#{https_proxy_attr}#{environment_attr}"
     only_if do File.exist?(scout_bin) end
   end
 else
