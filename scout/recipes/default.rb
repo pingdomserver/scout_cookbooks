@@ -23,7 +23,7 @@ end.run_action(:create)
 gem_package "scout" do
   gem_binary File.join(RbConfig::CONFIG['bindir'],"gem")
   version node[:scout][:version]
-  action :install
+  action :upgrade
 end
 
 if node[:scout][:key]
