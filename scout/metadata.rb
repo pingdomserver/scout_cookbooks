@@ -1,3 +1,4 @@
+name              "scout"
 maintainer        "Scout Support"
 maintainer_email  "supports@scoutapp.com"
 license           "Apache 2.0"
