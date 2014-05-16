@@ -28,6 +28,7 @@ end
 
 if node[:scout][:key]
   scout_bin = node[:scout][:bin] ? node[:scout][:bin] : "#{Gem.bindir}/scout"
+  rvm_wrapper = node[:scout][:rvm_wrapper] ? node[:scout][:rvm_wrapper] : ""
   name_attr = node[:scout][:name] ? %{ --name "#{node[:scout][:name]}"} : ""
   server_attr = node[:scout][:server] ? %{ --server "#{node[:scout][:server]}"} : ""
   roles_attr = node[:scout][:roles] ? %{ --roles "#{node[:scout][:roles].map(&:to_s).join(',')}"} : ""
@@ -35,11 +36,28 @@ if node[:scout][:key]
   https_proxy_attr = node[:scout][:https_proxy] ? %{ --https-proxy "#{node[:scout][:https_proxy]}"} : ""
   environment_attr = node[:scout][:environment] ? %{ --environment "#{node[:scout][:environment]}"} : ""
 
+  # Automatically set the rvm wrapper path if the scout_bin path contains rvm.
+  if scout_bin =~ %r{rvm/} and rvm_wrapper.empty?
+    rvm_wrapper = scout_bin.split('/')
+    rvm_wrapper.pop(2)
+    ruby_version = rvm_wrapper.pop
+    rvm_wrapper.pop
+    rvm_wrapper += [ "wrappers", ruby_version, "ruby" ]
+    rvm_wrapper = rvm_wrapper.join('/')
+  end
+
+  # Make sure we can find both the wrapper and the bin
+  unless rvm_wrapper.empty?
+    found = true if File.exist?(scout_bin) and File.exist?(rvm_wrapper)
+  else
+    found = true if File.exist?(scout_bin)
+  end
+
   # schedule scout agent to run via cron
   cron "scout_run" do
     user node[:scout][:user]
-    command "#{scout_bin} #{node[:scout][:key]}#{name_attr}#{server_attr}#{roles_attr}#{http_proxy_attr}#{https_proxy_attr}#{environment_attr}"
-    only_if do File.exist?(scout_bin) end
+    command "#{rvm_wrapper} #{scout_bin} #{node[:scout][:key]}#{name_attr}#{server_attr}#{roles_attr}#{http_proxy_attr}#{https_proxy_attr}#{environment_attr}"
+    only_if do found end
   end
 else
   Chef::Log.warn "The agent will not report to scoutapp.com as a key wasn't provided. Provide a [:scout][:key] attribute to complete the install."
