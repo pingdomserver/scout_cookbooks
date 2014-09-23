@@ -30,7 +30,7 @@ if node[:scout][:key]
   scout_bin = Scout.scout_binary(node)
   name_attr = node[:scout][:name] ? %{ --name "#{node[:scout][:name]}"} : ""
   server_attr = node[:scout][:server] ? %{ --server "#{node[:scout][:server]}"} : ""
-  roles_attr = node[:scout][:roles] ? %{ --roles "#{node[:scout][:roles].map(&:to_s).join(',')}"} : ""
+  roles_attr = node[:scout][:roles] ? %{ --roles "#{node[:scout][:roles].map{ |r| r.to_s.downcase }.join(',')}"} : ""
   http_proxy_attr = node[:scout][:http_proxy] ? %{ --http-proxy "#{node[:scout][:http_proxy]}"} : ""
   https_proxy_attr = node[:scout][:https_proxy] ? %{ --https-proxy "#{node[:scout][:https_proxy]}"} : ""
   environment_attr = node[:scout][:environment] ? %{ --environment "#{node[:scout][:environment]}"} : ""
