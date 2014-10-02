@@ -1,2 +1,2 @@
-include_recipe 'scout-cron'
-include_recipe 'scout-install'
+include_recipe "#{cookbook_name}::scout-install"
+include_recipe "#{cookbook_name}::scout-cron"
