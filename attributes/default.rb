@@ -19,3 +19,4 @@ default[:scout][:delete_on_shutdown] = false	# create rc.d script to remove the 
 default[:scout][:plugin_gems] = []   # list of gems to install to support plugins for role
 default[:scout][:environment] = nil
 default[:scout][:plugin_properties] = {}
+default[:scout][:cron_enabled] = true
