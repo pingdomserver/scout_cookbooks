@@ -115,6 +115,11 @@ If the <code>[:scout][:key]</code> attribute is not provided or the scout execut
       <td>[:scout][:plugin_properties]</td>
       <td>Hash. Used to generate a plugins.properties file from encrypted data bags for secure lookups. E.g. "haproxy.password" => {"encrypted_data_bag" => "shared_passwords", "item" => "haproxy_stats", "key" => "password"} will create a plugins.properties entry with "haproxy.password=PASSWORD" where PASSWORD is an encrypted data bag item "haproxy_stats" in encrypted_data_bag "shared_passwords" with key "password".</td>
       <td><code>{}</code></td>
+    </tr>
+    <tr>
+      <td>[:scout][:cron_enabled]</td>
+      <td>Boolean attribute to enable or disable scout_run in crontab.</td>
+      <td><code>true</code></td>
   </tbody>
 </table>
 
