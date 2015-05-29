@@ -33,6 +33,14 @@ when 'fedora'
   end
 end
 
+user 'scoutd' do
+  gid 'scoutd'
+  shell '/bin/bash'
+  home '/var/lib/scoutd'
+  system true
+  action :create
+end
+
 if node[:scout][:account_key]
   ENV['SCOUT_KEY'] = node[:scout][:account_key]
 
