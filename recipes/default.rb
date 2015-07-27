@@ -62,7 +62,7 @@ if account_key
       :log_file => node[:scout][:log_file],
       :ruby_path => node[:scout][:ruby_path],
       :environment => node[:scout][:environment],
-      :roles => node[:scout][:roles],
+      :roles => node[:scout][:roles].join(","),
       :agent_data_file => node[:scout][:agent_data_file],
       :http_proxy => node[:scout][:http_proxy],
       :https_proxy => node[:scout][:https_proxy]
