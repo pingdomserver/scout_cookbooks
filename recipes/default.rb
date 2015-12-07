@@ -19,7 +19,7 @@ when 'debian'
     components [node[:lsb][:codename], "main"]
     only_if { node[:scout][:repo][:enable] }
   end
-when 'redhat', 'centos'
+when 'redhat', 'centos', 'amazon'
   yum_repository "scout" do
     description "Scout server monitoring - scoutapp.com"
     baseurl "http://archive.scoutapp.com/rhel/$releasever/main/$basearch/"
