@@ -35,7 +35,6 @@ when 'fedora'
     action :create
     only_if { node[:scout][:repo][:enable] }
   end
-end
 when 'amazon'
   yum_repository "scout" do
     description "Scout server monitoring - scoutapp.com"
