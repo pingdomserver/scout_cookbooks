@@ -36,6 +36,15 @@ when 'fedora'
     only_if { node[:scout][:repo][:enable] }
   end
 end
+when 'amazon'
+  yum_repository "scout" do
+    description "Scout server monitoring - scoutapp.com"
+    baseurl "http://archive.scoutapp.com/amazon/$releasever/main/$basearch/"
+    gpgkey "https://archive.scoutapp.com/RPM-GPG-KEY-scout"
+    action :create
+    only_if { node[:scout][:repo][:enable] }
+  end
+end
 
 account_key = Scout.account_key(node)
 
