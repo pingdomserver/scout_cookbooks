@@ -38,7 +38,7 @@ when 'fedora'
 when 'amazon'
   yum_repository "scout" do
     description "Scout server monitoring - scoutapp.com"
-    baseurl "http://archive.scoutapp.com/amazon/$releasever/main/$basearch/"
+    baseurl "http://archive.scoutapp.com/amazon/latest/main/$basearch/"
     gpgkey "https://archive.scoutapp.com/RPM-GPG-KEY-scout"
     action :create
     only_if { node[:scout][:repo][:enable] }
