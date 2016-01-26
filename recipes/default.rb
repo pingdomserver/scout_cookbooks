@@ -66,6 +66,10 @@ if account_key
     end
   end
 
+  link '/etc/init.d/scout' do
+    to '/usr/sbin/scoutctl'
+  end
+
   # We only need the scout service definition so that we can
   # restart scout after we configure scoutd.yml
   service "scout" do
