@@ -10,14 +10,15 @@ when 'ubuntu'
     key "https://archive.scoutapp.com/scout-archive.key"
     uri "http://archive.scoutapp.com"
     components [ "main" ]
-    distribution "ubuntu"
+    distribution node[:lsb][:codename]
     only_if { node[:scout][:repo][:enable] }
   end
 when 'debian'
   apt_repository "scout" do
     key "https://archive.scoutapp.com/scout-archive.key"
     uri "http://archive.scoutapp.com"
-    components [node[:lsb][:codename], "main"]
+    components [ "main" ]
+    distribution node[:lsb][:codename]
     only_if { node[:scout][:repo][:enable] }
   end
 when 'redhat', 'centos'
