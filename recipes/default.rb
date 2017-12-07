@@ -102,7 +102,10 @@ if account_key
       :roles => node[:scout][:roles],
       :agent_data_file => node[:scout][:agent_data_file],
       :http_proxy => node[:scout][:http_proxy],
-      :https_proxy => node[:scout][:https_proxy]
+      :https_proxy => node[:scout][:https_proxy],
+      :statsd => {
+        :addr => node[:scout][:statsd][:addr]
+      }
     }
     action :create
     sensitive true

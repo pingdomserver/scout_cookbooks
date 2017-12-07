@@ -1,5 +1,12 @@
 <% @options.each do |key, val| %>
-<% if !val.nil? and val != "" %>
+<% if val.is_a?(Hash) %>
+<%= key %>:
+<% val.each do |k, v| %>
+<% if !v.nil? and v != "" %>
+  <%= k %>: <%= v %>
+<% end %>
+<% end %>
+<% elsif !val.nil? and val != "" %>
 <%= key %>: <%= val %>
 <% end %>
 <% end %>

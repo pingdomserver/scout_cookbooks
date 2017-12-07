@@ -25,3 +25,5 @@ default[:scout][:repo][:enable] = true # create the apt/yum repo files for the s
 
 default[:scout][:key][:bag_name] = nil
 default[:scout][:key][:item_name] = nil
+
+default[:scout][:statsd][:addr] = nil
