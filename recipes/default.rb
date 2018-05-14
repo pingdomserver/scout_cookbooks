@@ -7,41 +7,41 @@ Chef::Log.info "Loading: #{cookbook_name}::#{recipe_name}"
 case node[:platform]
 when 'ubuntu'
   apt_repository "scout" do
-    key "https://archive.scoutapp.com/scout-archive.key"
-    uri "http://archive.scoutapp.com"
+    key "https://archive.server.pingdom.com/scout-archive.key"
+    uri "http://archive.server.pingdom.com"
     components [ "main" ]
     distribution node[:lsb][:codename]
     only_if { node[:scout][:repo][:enable] }
   end
 when 'debian'
   apt_repository "scout" do
-    key "https://archive.scoutapp.com/scout-archive.key"
-    uri "http://archive.scoutapp.com"
+    key "https://archive.server.pingdom.com/scout-archive.key"
+    uri "http://archive.server.pingdom.com"
     components [ "main" ]
     distribution node[:lsb][:codename]
     only_if { node[:scout][:repo][:enable] }
   end
 when 'redhat', 'centos'
   yum_repository "scout" do
-    description "Scout server monitoring - scoutapp.com"
-    baseurl "http://archive.scoutapp.com/rhel/$releasever/main/$basearch/"
-    gpgkey "https://archive.scoutapp.com/RPM-GPG-KEY-scout"
+    description "Pingdom server monitoring - server.pingdom.com"
+    baseurl "http://archive.server.pingdom.com/rhel/$releasever/main/$basearch/"
+    gpgkey "https://archive.server.pingdom.com/RPM-GPG-KEY-scout"
     action :create
     only_if { node[:scout][:repo][:enable] }
   end
 when 'fedora'
   yum_repository "scout" do
-    description "Scout server monitoring - scoutapp.com"
-    baseurl "http://archive.scoutapp.com/fedora/$releasever/main/$basearch/"
-    gpgkey "https://archive.scoutapp.com/RPM-GPG-KEY-scout"
+    description "Pingdom server monitoring - server.pingdom.com"
+    baseurl "http://archive.server.pingdom.com/fedora/$releasever/main/$basearch/"
+    gpgkey "https://archive.server.pingdom.com/RPM-GPG-KEY-scout"
     action :create
     only_if { node[:scout][:repo][:enable] }
   end
 when 'amazon'
   yum_repository "scout" do
-    description "Scout server monitoring - scoutapp.com"
-    baseurl "http://archive.scoutapp.com/amazon/latest/main/$basearch/"
-    gpgkey "https://archive.scoutapp.com/RPM-GPG-KEY-scout"
+    description "Pingdom server monitoring - server.pingdom.com"
+    baseurl "http://archive.server.pingdom.com/amazon/latest/main/$basearch/"
+    gpgkey "https://archive.server.pingdom.com/RPM-GPG-KEY-scout"
     action :create
     only_if { node[:scout][:repo][:enable] }
   end
@@ -112,7 +112,7 @@ if account_key
     notifies :restart, 'service[scout]', :delayed
   end
 else
-  Chef::Application.fatal! "The agent will not report to scoutapp.com as a key wasn't provided. Provide a [:scout][:account_key] or [:scout][:key][:bag_name] and [:scout][:key][:item_name] attribute to complete the install."
+  Chef::Application.fatal! "The agent will not report to server.pingdom.com as a key wasn't provided. Provide a [:scout][:account_key] or [:scout][:key][:bag_name] and [:scout][:key][:item_name] attribute to complete the install."
 end
 
 directory "/var/lib/scoutd/.scout" do
