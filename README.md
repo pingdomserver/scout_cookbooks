@@ -1,6 +1,6 @@
 # chef-scout
 
-Installs the agent for [Scout](http://scoutapp.com), a hosted server monitoring service. This recipe:
+Installs the agent for [Pingdom server monitor](http://server.pingdom.com), a hosted server monitoring service. This recipe:
 
 * Installs scoutd, the Scout monitoring daemon
 * Runs scoutd
@@ -119,7 +119,7 @@ Default value: `nil`
 
 ## Questions?
 
-Contact Scout (<support@scoutapp.com>) with any questions, suggestions, bugs, etc.
+Contact Scout (<support@server.pingdom.com>) with any questions, suggestions, bugs, etc.
 
 ## Authors and License
 
