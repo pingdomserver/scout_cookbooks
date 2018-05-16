@@ -1,4 +1,4 @@
-Installs scoutd the agent for [Pingdom server monitor](http://server.pingdom.com), a hosted server monitoring service. This recipe:
+Installs the scoutd agent for [Pingdom server monitor](http://server.pingdom.com), a hosted server monitoring service. This recipe:
 
 * Installs scoutd, the monitoring daemon
 * Runs scoutd
@@ -23,7 +23,7 @@ The following platforms are supported by this cookbook, meaning that the recipes
 
 ### [:scout][:account_key]
 
-The agent requires a Scout account and the account's associated key. The key can be found in the account settings tab within the Scout UI or in the server setup instructions. The key looks like: `0mZ6BD9DR0qyZjaBLCPZZWkW3n2Wn7DV9xp5gQPs`
+The agent requires a Pingdom Server Monitor account and the account's associated key. The key can be found in the account settings tab within the UI or in the server setup instructions. The key looks like: `0mZ6BD9DR0qyZjaBLCPZZWkW3n2Wn7DV9xp5gQPs`
 
 Default value: `nil`
 
@@ -33,19 +33,19 @@ If the `[:scout][:account_key]` attribute is not provided the scout agent won't 
 
 ### [:scout][:hostname]
 
-Optional hostname to uniquely identify this host to Scout.
+Optional hostname to uniquely identify this host to Pingdom Server Monitor.
 
 Default value: `nil`
 
 ### [:scout][:display_name]
 
-Optional name to display for this node within the Scout UI.
+Optional name to display for this node within the Pingdom Server Monitor UI.
 
 Default value: `nil`
 
 ### [:scout][:roles]
 
-An Array of roles for this node. Roles are defined through Scout's UI.
+An Array of roles for this node. Roles are defined through Pingdom Server Monitor's UI.
 
 Default value: `nil`
 
@@ -57,7 +57,7 @@ Default value: `nil`
 
 ### [:scout][:ruby_path]
 
-The full path to a ruby executable or rvm wrapper which will run the Scout Ruby code and where the gem dependencies will be installed. If installing under a user based RVM install, you should also set the `:user` and `:group` options in `:gem_shell_opts` (see below). Example: `:rvm_wrapper => "/home/vagrant/.rvm/wrappers/ruby-1.9.3-p547"`
+The full path to a ruby executable or rvm wrapper which will run the Pingdom Server Monitor Ruby code and where the gem dependencies will be installed. If installing under a user based RVM install, you should also set the `:user` and `:group` options in `:gem_shell_opts` (see below). Example: `:rvm_wrapper => "/home/vagrant/.rvm/wrappers/ruby-1.9.3-p547"`
 
 Default value: `nil`
 
@@ -93,13 +93,13 @@ Default value: `{}`
 
 ### [:scout][:delete_on_shutdown]
 
-If true, will run a shutdown script to remove the server from Scout when the server is shutdown.
+If true, will run a shutdown script to remove the server from Pingdom Server Monitor when the server is shutdown.
 
 Default value: `nil`
 
 ### [:scout][:repo][:enable]
 
-If true, will install the correct archive.scoutapp.com repository based on the hosts platform.  Only disable if you have the scoutd package hosted in a repository already installed on the host.
+If true, will install the correct archive.server.pingdom.com repository based on the hosts platform.  Only disable if you have the scoutd package hosted in a repository already installed on the host.
 
 Default value: `true`
 
