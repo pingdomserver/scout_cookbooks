@@ -1,8 +1,6 @@
-# chef-scout
+Installs scoutd the agent for [Pingdom server monitor](http://server.pingdom.com), a hosted server monitoring service. This recipe:
 
-Installs the agent for [Pingdom server monitor](http://server.pingdom.com), a hosted server monitoring service. This recipe:
-
-* Installs scoutd, the Scout monitoring daemon
+* Installs scoutd, the monitoring daemon
 * Runs scoutd
 
 ## Supported Platforms
@@ -119,25 +117,9 @@ Default value: `nil`
 
 ## Questions?
 
-Contact Scout (<support@server.pingdom.com>) with any questions, suggestions, bugs, etc.
+Contact Scout (<support.server@pingdom.com>) with any questions, suggestions, bugs, etc.
 
-## Authors and License
-
-Additions, Modifications, & Updates:
-
-Author: Derek Haynes (<support@scoutapp.com>)
-Copyright: 2013, Scout
-https://github.com/scoutapp/chef-scout
-
-Author: Drew Blas (<drew.blas@gmail.com>)
-Copyright: 2012, Drew Blas
-https://github.com/drewblas/chef-scout_agent
-
-Originally:
-
-Author: Seth Chisamore (<schisamo@gmail.com>)
-Copyright: 2010, Seth Chisamore
-https://github.com/schisamo/chef_cookbooks
+## License
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
